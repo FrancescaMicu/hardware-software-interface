@@ -9,6 +9,8 @@ void rotate_left(unsigned int *number, int bits)
 	/* TODO */
 	(void) number;
 	(void) bits;
+	int mask = (*number) >> (sizeof(*number) * 8 - bits);
+	(*number) = (*number << bits) | mask;
 }
 
 void rotate_right(unsigned int *number, int bits)
@@ -16,4 +18,6 @@ void rotate_right(unsigned int *number, int bits)
 	/* TODO */
 	(void) number;
 	(void) bits;
+	int mask = (*number) >> (sizeof(*number) * 8 - bits);
+	(*number) = (*number << bits) | mask;
 }
