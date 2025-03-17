@@ -8,7 +8,15 @@
 
 int main(void)
 {
-	/* TODO: Test functions */
+	char *str;
+
+	str = new_string("ababababacccbacbacbacbacbabc");
+
+	printf("len(\"%s\") = %d\n", str, my_strlen(str));
+	equality_check(str);
+
+	// free memory
+	free(str);
 
 	return 0;
 }

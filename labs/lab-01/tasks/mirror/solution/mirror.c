@@ -37,6 +37,5 @@ void mirror(char *s)
 		mirror_idx = len - i - 1;
 		aux = *(s + i);
 		*(s + i) = *(s + mirror_idx);
-		*(s + mirror_idx) = aux;
 	}
 }
