@@ -8,12 +8,20 @@
 
 char *delete_first(char *s, char *pattern)
 {
-	/**
-	 * TODO: Implement this function
-	 */
-
+	// TODO: Implement this function
 	(void) s;
 	(void) pattern;
+	if ( strstr(s, pattern) == 0 ) {
+		printf("Nu s-a gasit");
+		return NULL;
+	}
+	
+	char *prim_rec = strstr(s, pattern);
+	char *del = malloc(strlen(s) + strlen(pattern));
 
-	return NULL;
+	int nr = strstr(s, pattern) - s;
+	strncpy(del, s, nr);
+	strcat(del + nr, prim_rec + strlen(pattern));
+	return del;
+	// return NULL;
 }
