@@ -17,12 +17,15 @@ main:
     mov eax, 2
     mov ebx, 1
     cmp eax, ebx
-    je print                        ; TODO1: eax > ebx?
+    jg print                        ; TODO1: eax > ebx?
     ret
 
 print:
     PRINTF32 `%s\n\x0`, myString
-                                    ; TODO2.2: print "Hello, World!" N times
+    sub ecx, 1
+    cmp ecx, 0
+    jnz print
+    PRINTF32 'Goodbye, World!'       ; TODO2.2: print "Hello, World!" N times
                                     ; TODO2.1: print "Goodbye, World!"
 
     ret
