@@ -7,10 +7,11 @@ section .text
     extern printf
 
 main:
-    mov al, 0xFF
+    mov al, 0xFF  ; al = 256
     PRINTF32 `the Carry Flag is not active\n\x0`
     test al, al
     ;TODO: activate the Carry Flag
+    add al, 1
 
     jc carry_flag
     jmp end
