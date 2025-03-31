@@ -1,8 +1,5 @@
-; SPDX-License-Identifier: BSD-3-Clause
-
 %include "printf32.asm"
 
-; https://en.wikibooks.org/wiki/X86_Assembly/Arithmetic
 
 section .data
     num1 db 43
@@ -24,11 +21,24 @@ main:
     mov bl, byte [num2]
     mul bl
 
-    ; Print result in hexa
+    mov ebx, 0
+    mov bx, ax
     PRINTF32 `Result is: 0x%hx\n\x0`, eax
 
+    mov ax, word [num1_w]
+    mov bx, word [num2_w]
+    mul bx
+    mov ebx, 0
+    mov bx, dx
+    mov ebx, 0
+    mov bx, ax
+    PRINTF32 `Result is: 0x%hx%hx\n\x0`, edx, eax
 
-   ; TODO: Implement multiplication for dw and dd data types.
+
+    mov eax, dword [num1_d]
+    mov ebx, dword [num2_d]
+    mul ebx
+    PRINTF32 `Result is: 0x%x%x\n\x0`, edx, eax
 
     leave
     ret
