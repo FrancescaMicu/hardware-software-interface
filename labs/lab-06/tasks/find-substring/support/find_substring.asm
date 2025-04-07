@@ -14,8 +14,25 @@ global main
 main:
     push ebp
     mov ebp, esp
+    mov ebx, source_text
+    mov ecx, substring
 
-    ; TODO: Print the start indices for all occurrences of the substring in source_text
+strstr:
+    cmp ebx, 0
+    je exit
+    cmp byte[ebx], byte[ecx]
+    je substr 
+    mov ebx, byte[ebx]+1
+substr:
+    cmp ecx, 0
+    je out1
+    cmp byte[ebx], byte[ecx]
+    je substr
+    mov ecx, substring
+    jump strstr
+out1:
+    call printf
+    
 
     leave
     ret

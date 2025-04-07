@@ -16,9 +16,24 @@ global main
 main:
     push ebp
     mov ebp, esp
-    ; TODO: Traversing array1 and array2 and putting the result in array3
-    PRINTF32 `The array that results from the product of the corresponding elements in array1 and array2 is:\n\x0`
-    ; TODO: Traversing array3 and displaying its elements
+    mov ecx, 10
+parcurgere:
+    xor eax, eax
+    xor ebx, ebx
+    xor edx, edx
+    mov al, byte[array1 + 10 -ecx]
+    mov bl, byte[array2 + 10 - ecx]
+    mul bl
+    mov word[array3 + (10 - ecx) * 2], ax
+    loop parcurgere
+
+PRINTF32 `The array that results from the product of the corresponding elements in array1 and array2 is:\n\x0`
+mov ecx, 10
+afis:
+    mov ax, word[array3 + (10 - ecx) * 2]
+    PRINTF32 `%hu \x0`, eax
+    loop afis
+
     PRINTF32 `\n\x0`
     leave
     ret
