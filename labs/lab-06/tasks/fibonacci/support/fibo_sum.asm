@@ -14,18 +14,23 @@ main:
     push ebp
     mov ebp, esp
 
-    ; TODO: calculate the sum of first N fibonacci numbers
-    ;       (f(0) = 0, f(1) = 1)
-    xor eax, eax     ;store the sum in eax
+    mov eax, 0
+    mov ebx, 0
+    mov ecx, [N]
+    mov edx, 1
+fibo:
+    add eax, ebx
+    add ebx, edx
+    xchg ebx, edx
+    loop fibo
 
-    ; Use the loop instruction
 
     push eax
     push dword [N]
     push sum_print_format
     call printf
     add esp, 12
-
+    pop ebx
     xor eax, eax
     leave
     ret
