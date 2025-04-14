@@ -48,6 +48,7 @@ copy_array_1:
     inc ecx
     inc eax
     cmp eax, ARRAY_1_LEN
+    sub esp, 4
     jb copy_array_1
     jmp print_array
 copy_array_2:

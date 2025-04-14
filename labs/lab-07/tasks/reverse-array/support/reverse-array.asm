@@ -14,10 +14,27 @@ global main
 main:
 
     ; TODO push the elements of the array on the stack
+
+    push ARRAY_LEN
+    pop ecx
+
+stack_up:
+    push array[input + 4*(ecx - 1)]
+    loop stack_UP
     ; TODO retrieve the elements (pop) from the stack into the output array
 
+restart:
+    push ARRAY_LEN
+    pop ecx
+
+stack_down:
+    pop array[output + 4 * (ecx - 1)]
+    loop stack_down
+
+print1:
     PRINTF32 `Reversed array: \n\x0`
     xor ecx, ecx
+
 print_array:
     mov edx, [output + 4 * ecx]
     PRINTF32 `%d\n\x0`, edx
