@@ -14,14 +14,29 @@ get_max:
 	; [ebp+8] is array pointer
 	; [ebp+12] is array length
 
-	mov ebx, [ebp+8]
-	mov ecx, [ebp+12]
+	mov ebx, [ebp + 8]
+	mov ecx, [ebp + 12]
+	mov edx, [ebp + 16]
 	xor eax, eax
 
 compare:
 	cmp eax, [ebx+ecx*4-4]
 	jge check_end
 	mov eax, [ebx+ecx*4-4]
+
+	push eax
+	mov eax, ecx
+
+	push ecx
+	mov ecx, 4
+	mul ecx
+	pop ecx
+	
+	add eax, ebx
+	sub eax, 4
+
+	mov edx, eax
+	pop eax
 check_end:
 	loopnz compare
 
