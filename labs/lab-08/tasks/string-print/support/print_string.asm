@@ -1,20 +1,19 @@
-%include "../utils/printf32.asm"
-
-section .data
-    mystring db "This is my string", 0
-
 section .text
 
 extern puts
-extern printf
-global main
-main:
+global print_string
+
+print_string:
     push ebp
     mov ebp, esp
+    push ebx                ; preserve ebx as required by cdecl
 
-    PRINTF32 `[PRINTF32]: %s\n[PUTS]: \x0`, mystring
+    ; TODO: print the string
+    mov eax, [ebp + 8]
+    push eax
+    call puts
+    add esp, 4
 
-    ; TODO: call puts on string
-
+    pop ebx
     leave
     ret
