@@ -7,14 +7,14 @@ LDFLAGS = -no-pie -m32
 
 all: main
 
-main: main.o hidden.o plain.o 
+main: main.o mul.o div.o
 	$(CC) $(LDFLAGS) -o $@ $^
 
-main.o: main.c ops.h
+main.o: main.c
 
-hidden.o: hidden.c
+mul.o: mul.c
 
-plain.o: plain.c
+div.o: div.c
 
 clean:
 	-rm -f main *.o
