@@ -9,16 +9,16 @@ global main
 main:
     push ebp
     mov ebp, esp
-
     mov ecx, [num]
-    mov eax, 0
+    xor ebx, ebx
 
 suma:
-    add eax, ecx
+    mov eax, ecx
+    mul eax
+    add ebx, eax
     loop suma
-
     mov ecx, [num]
-    PRINTF32 `Sum(%u): %u\n\x0`, ecx, eax
+    PRINTF32 `Sum(%u): %u\n\x0`, ecx, ebx
 
     leave
     ret
