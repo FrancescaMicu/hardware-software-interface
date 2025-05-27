@@ -6,6 +6,7 @@
 
 #include "len_xor.h"
 
+
 int my_strlen(const char *str)
 {
 	/* TODO */
@@ -16,13 +17,21 @@ int my_strlen(const char *str)
 	 *
 	 * Remove this cast when implementing the function.
 	 */
-	(void) str;
-
-	return -1;
+	 int lung = 0;
+	while ( (*str) != NULL ) {
+		lung++;
+		str++;
+	}
+	
+	return lung;
 }
 
 void equality_check(const char *str)
 {
 	/* TODO */
-	(void) str;
+	int lung = my_strlen(str);
+	for ( int i = 0; i < lung; i++ ) {
+		if (!(*(str + i) ^ *(str + ((i + (1 << i)) % lung))))
+			printf("Address of %c: %p\n", *(str + i), str + i);
+	}
 }
