@@ -17,6 +17,5 @@ int main(void)
 	(void) a;
 	(void) b;
 	(void) c;
-
 	return 0;
 }
