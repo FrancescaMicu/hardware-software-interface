@@ -7,7 +7,16 @@ rot13:
     push ebx                ; preserve ebx as required by cdecl
 
     ; TODO
+    mov eax, [ebp + 8]
+    mov ebx, [ebp + 12]
 
+    xor ecx, ecx
+for_arr:
+    cmp ecx, 0
+    je end
+    add [eax], 13 
+
+end:
     pop ebx
     leave
     ret

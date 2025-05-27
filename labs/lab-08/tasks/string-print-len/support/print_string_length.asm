@@ -12,6 +12,12 @@ print_string_length:
     push ebx                ; preserve ebx as required by cdecl
 
     ; TODO: print the string length
+    mov eax, [ebp + 8]
+    
+    push eax
+    push print_format
+    call printf
+    add esp, 8
 
     pop ebx
     leave
